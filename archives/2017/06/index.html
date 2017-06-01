@@ -98,7 +98,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="kong&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
 <meta property="og:site_name" content="kong&#39;s blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kong&#39;s blog">
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/archives/2017/06/"/>
 
 
 
 
 
-  <title>kong's blog</title>
+  <title>归档 | kong's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,9 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -294,127 +292,67 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 1 篇日志。 继续努力。
+    </span>
+
     
+
+      
+      
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/JavaScript中原型对象/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yakong xing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      
         
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/01/JavaScript中原型对象/" itemprop="url">JavaScript中原型对象</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T21:12:57+08:00">
-                2017-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
       
       
 
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
-          
-            <p>每个函数创建以后就会存在一个属性prototype，该属性是一个指针，所指向的对象为：  相应对象实例的原型对象。原型对象的用处在于： 在该函数作为构造函数时，原型对象包含所有 由<br>该构造函数产生的对象实例（new关键字）共享的属性和方法。<br>所有原型对象默认只会获得一个constructor属性，该属性指向其所在函数本身；至于其他方法，则都是从Object继承而来。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function F() &#123;&#125;</div><div class="line">F.prototype.constructor === F //true</div><div class="line">typeof F.prototype.__proto__ === Object //该对象包含从Object继承的方法(toString, toLocaleString, valueOf等)</div></pre></td></tr></table></figure>
-<p>调用构造函数创建一个新实例后，该实例内部将包含一个指针，指向构造函数的原型对象，ECMA-262 5th叫这个指针为[[Prototype]],Firefox, Chrome,Safari浏览器中<br>则是每个实例都支持一个<strong>proto</strong>属性, 这个对象连接的是实例和构造函数原型对象，而不是连接实例和构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function F() &#123;&#125;</div><div class="line">let f = new F();</div><div class="line">f.__proto__ === F.prototype ///true</div><div class="line">Object.getPrototypeOf(f) === F.prototype //getPrototypeOf方法检测[[Prototype]]与原型对象是否存在连接关系([[Prototype]]无法被访问到)</div><div class="line">Object.setPrototypeOf(obj, prototype) //setPrototypeOf方法可以设置连接obj和某个原型对象</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function G()&#123;&#125;</div><div class="line"></div><div class="line">G.prototype.foo = &apos;blab&apos;;</div><div class="line"></div><div class="line">let obj1 = &#123;&#125;;</div><div class="line">let obj2 = new G();</div><div class="line"></div><div class="line">obj1.foo; //&apos;undefined&apos;</div><div class="line">obj2.foo; //&apos;blab&apos;</div><div class="line"></div><div class="line">Object.setPrototypeOf(obj1, obj2);</div><div class="line"></div><div class="line">obj1.foo; //&apos;blab&apos;</div><div class="line">obj2.foo; //&apos;blab&apos;</div><div class="line"></div><div class="line">Object.getPrototypeOf(obj1) === G.prototype; //false</div><div class="line">Object.getPrototypeOf(obj2) === G.prototype; //true</div><div class="line"></div><div class="line">console.log(Object.getPrototypeOf(obj1), Object.getPrototypeOf(obj2));</div></pre></td></tr></table></figure>
-<p><img src="C:\Users\yakong\Pictures\Saved Pictures\捕获.PNG" alt="捕获"><br>Object.setPrototypeOf()会造成不好的性能影响，请避免使用，可以使用Object.create()创建新的实例</p>
-
-          
+            <a class="post-title-link" href="/2017/06/01/JavaScript中原型对象/" itemprop="url">
+              
+                <span itemprop="name">JavaScript中原型对象</span>
+              
+            </a>
         
-      
-    </div>
+      </h2>
 
-    <div>
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-06-01T21:12:57+08:00"
+              content="2017-06-01" >
+          06-01
+        </time>
+      </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+    </header>
   </article>
 
 
+
     
+
   </section>
 
   
+
 
 
           </div>
@@ -608,6 +546,12 @@
   
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   
 
