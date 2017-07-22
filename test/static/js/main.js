@@ -1,6 +1,6 @@
 let gamelist, objects = []
 let client = algoliasearch("VICM0QATAN", "36fff9ff4adff96002e8219dbdecff1e");
-let index = client.initIndex('your_index_name');
+let index = client.initIndex('steamgame');
 
 function fetchgame() {
   axios.get('https://steamspy.com/api.php?request=all')
