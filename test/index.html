@@ -12,6 +12,7 @@
       var client = algoliasearch("VICM0QATAN", "36fff9ff4adff96002e8219dbdecff1e");
       var index = client.initIndex('steamgame');
       var objects = [];
+      var imgUrlList = []
 
       function updateIndex() {
         function getData() {
@@ -21,17 +22,29 @@
               handleData(res.data)
             })
             .then(() => {
-              index.addObjects(objects, function (err, content) {
+              /* index.addObjects(objects, function (err, content) {
                 console.log(content);
-              });
+              }); */
+              index.saveObjects([{
+                objectID: '10',
+                img_url: "http://cdn.akamai.steamstatic.com/steam/apps/10/header.jpg"
+              }], function(err, content) {
+                console.log(content)
+              })
             })
         }
         function handleData(data) {
-          for (let i of Object.entries(data)) {
-            i[1].objectID = i[0]
-            objects.push(i[1])
+          for (let i of Object.keys(data)) {
+            objects.push(i)
+            imgUrlList.push({
+              objectID: i,
+              img_url: 'http://cdn.akamai.steamstatic.com/steam/apps/' + i + '/header.jpg'
+            })
           }
-          console.log('handle ok')
+          console.group('imgurl list')
+          console.dir(objects)
+          console.dir(imgUrlList)
+          console.groupEnd()
         }
 
         getData()
