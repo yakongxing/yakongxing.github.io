@@ -19,28 +19,21 @@
             .then(res => {
               console.log('fetch ok')
               handleData(res.data)
+              // console.log(objects);
+              index.addObjects(objects, function (err, content) {
+                console.log(content);
+              });
             })
         }
         function handleData(data) {
           for (let i of Object.entries(data)) {
             i[1].objectID = i[0]
-            objects.push(i)
+            objects.push(i[1])
           }
           console.log('handle ok')
         }
 
         getData()
-        console.dir(objects)
-        index.addObjects([{
-          firstname: 'xing',
-          lastname: 'yakong'
-        }, {
-          firstname: 'liu',
-          lastanme: 'jian'
-        }
-        ], function (err, content) {
-          console.log(content);
-        });
 
       }
       document.addEventListener('DOMContentLoaded', updateIndex)
