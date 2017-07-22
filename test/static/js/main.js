@@ -10,6 +10,7 @@ function fetchgame() {
         objects.push({
           objectID: i[0],
           img_url: `https://steamcdn-a.akamaihd.net/steam/apps/${i[0]}/header.jpg`,
+          tags: Object.keys(i[1].tags),
           ...i[1]
         })
       }
