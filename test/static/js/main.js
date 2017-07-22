@@ -9,6 +9,7 @@ function fetchgame() {
       for (let i of Object.entries(gamelist)) {
         objects.push({
           objectID: i[0],
+          img_url: `https://steamcdn-a.akamaihd.net/steam/apps/${i[0]}/header.jpg`,
           ...i[1]
         })
       }
