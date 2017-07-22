@@ -17,9 +17,13 @@ function fetchgame() {
     })
     .then(() => {
       console.info('upload start!', objects.length);
-      while (objects.length > 0) {
+      /* while (objects.length > 0) {
         setTimeout(upload(objects.splice(0, 100), 5000));
-      }
+      } */
+      upload({
+        tags: ['Actions', 'MMO'],
+        objectID: '570'
+      })
 
       console.info('upload ok!');
     });
@@ -27,7 +31,7 @@ function fetchgame() {
 
 function upload(data) {
   return function() {
-    index.saveObjects(data, (err, res) => {
+    index.particalUpdateObject(data, (err, res) => {
       index.waitTask(res.taskID, err => {
         if (!err) {
           console.log(`object${res.objectID} indexed`);
