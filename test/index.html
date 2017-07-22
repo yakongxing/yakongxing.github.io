@@ -22,7 +22,7 @@
             })
         }
         function handleData(data) {
-          for (let i of data.entries) {
+          for (let i of Object.entries(data)) {
             i[1].objectID = i[0]
             objects.push(i)
           }
