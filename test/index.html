@@ -21,12 +21,9 @@
               handleData(res.data)
             })
             .then(() => {
-              while (objects.length > 0) {
-                let arr = objects.splice(0, 1000)
-                index.addObjects(arr, function (err, content) {
-                  console.log(content);
-                });
-              }
+              index.addObjects(objects, function (err, content) {
+                console.log(content);
+              });
             })
         }
         function handleData(data) {
