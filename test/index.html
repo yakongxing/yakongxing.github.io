@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js'></script>
+    <script>
+      var client = algoliasearch("VICM0QATAN", "36fff9ff4adff96002e8219dbdecff1e");
+      var index = client.initIndex('steamgame');
+      var objects = [];
+
+      function updateIndex() {
+        function getData() {
+          axios.get('https://steamspy.com/api.php?request=all')
+            .then(res => {
+              console.log('fetch ok')
+              handleData(res.data)
+            })
+        }
+        function handleData(data) {
+          for (let i of data.entries) {
+            i[1].objectID = i[0]
+            objects.push(i)
+          }
+          console.log('handle ok')
+        }
+
+        getData()
+        index.addObjects(objects, function (err, content) {
+          console.log(content);
+        });
+
+      }
+      document.addEventListener('DOMContentLoaded', updateIndex)
+      console.log(index)
+    </script>
+  </body>
+</html>
