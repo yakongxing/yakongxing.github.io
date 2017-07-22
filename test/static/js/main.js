@@ -6,15 +6,18 @@ function fetchgame() {
   axios.get('https://steamspy.com/api.php?request=all')
     .then(res => gamelist = res.data)
     .then(() => {
-      for (let i of Object.values(gamelist)) {
-        objects.push(i)
+      for (let i of Object.entries(gamelist)) {
+        objects.push({
+          objectID: i[0],
+          ...i[1]
+        })
       }
     })
     .then(() => {
-      console.info('upload start!')
-      while (objects.length > 0) {
+      console.info('upload start!', objects.length)
+       while (objects.length > 0) {
         setTimeout(upload(objects.splice(0, 100), 5000))
-      }
+      } 
 
       console.info('upload ok!')
     })
