@@ -31,7 +31,7 @@ function fetchgame() {
 
 function upload(data) {
   return function() {
-    index.particalUpdateObject(data, (err, res) => {
+    index.partialUpdateObject(data, (err, res) => {
       index.waitTask(res.taskID, err => {
         if (!err) {
           console.log(`object${res.objectID} indexed`);
